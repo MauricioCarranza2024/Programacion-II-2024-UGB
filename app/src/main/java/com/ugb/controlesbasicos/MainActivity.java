@@ -5,70 +5,55 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    TextView temVal;
+    TabHost tbh;
+    TextView tempval;
+    Spinner spn;
     Button btn;
-    RadioGroup opt;
-
+    conversores miObj = new conversores();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn = findViewById(R.id.btncalcular);
+        tbh = findViewById(R.id.tbhConversor);
+        tbh.setup();
+
+        tbh.addTab(tbh.newTabSpec("LON").setContent(R.id.tabLongitud).setIndicator("LONGITUD", null));
+        tbh.addTab(tbh.newTabSpec("ALM").setContent(R.id.tabAlmacenamiento).setIndicator("ALMACENAMIENTO", null));
+        tbh.addTab(tbh.newTabSpec("MON").setContent(R.id.tabMonedas).setIndicator("MONEDAS", null));
+        btn=findViewById(R.id.btnConvertirLongitud);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                temVal = findViewById(R.id.txtnum1);
-                double num1 = Double.parseDouble(temVal.getText().toString());
+            public void onClick(View v) {
+                spn = findViewById(R.id.spnDElongitud);
+                int de = spn.getSelectedItemPosition();
 
-                temVal = findViewById(R.id.txtnum2);
-                double num2 = Double.parseDouble(temVal.getText().toString());
+                spn = findViewById(R.id.spnAlongitud);
+                int a = spn.getSelectedItemPosition();
 
-                double respuesta = 0;
-                opt = findViewById(R.id.optOpciones);
-                switch (opt.getCheckedRadioButtonId()){
-                    case R.id.optSuma:
-                        respuesta = num1 + num2;
-                        break;
-                    case R.id.optResta:
-                        respuesta=num1-num2;
-                        break;
-                    case R.id.optMultiplicacion:
-                        respuesta=num1*num2;
-                        break;
-                    case R.id.optDivision:
-                        respuesta=num1/num2;
-                        break;
-                    case R.id.optPorcentaje:
-                        respuesta = (num1 / 100) * num2;
-                        break;
-                    case R.id.optExponenciacion:
-                        respuesta = Math.pow(num1, num2);
-                        break;
-                    case R.id.optFactorial:
-                        respuesta = factorial((int) num1);
-                        break;
-                    case R.id.optRaiz:
-                        respuesta = Math.sqrt(num1);
-                        break;
-                }
-
-                temVal = findViewById(R.id.lblrespuesta);
-                temVal.setText("respuesta: "+ respuesta);
+                tempval=findViewById(R.id.txtCantidadLongitud);
+                double cantidad= Double.parseDouble(tempval.getText().toString());
+                double resp = miObj.convertir(0, de, a, cantidad);
+                Toast.makeText(getApplicationContext(),"Respuesta:"+ resp, Toast.LENGTH_LONG).show();
             }
+
         });
     }
+}
+class conversores {
+    double[][] valores = {
+            {1, 100, 39.3701, 3.28084, 1.193, 1.09361, 0.001, 0.000621371},
+            {1},
+            {1}
+    };
 
-    public int factorial(int n) {
-        if (n == 0) {
-            return 1;
-        } else {
-            return n * factorial(n - 1);
-        }
+    public double convertir(int opcion, int de, int a, double cantidad) {
+        return valores[opcion][a] / valores[opcion][de] * cantidad;
     }
 }
-
