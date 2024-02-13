@@ -25,8 +25,10 @@ public class MainActivity extends AppCompatActivity {
         tbh.setup();
 
         tbh.addTab(tbh.newTabSpec("LON").setContent(R.id.tabLongitud).setIndicator("LONGITUD", null));
-        tbh.addTab(tbh.newTabSpec("ALM").setContent(R.id.tabAlmacenamiento).setIndicator("ALMACENAMIENTO", null));
+        tbh.addTab(tbh.newTabSpec("ALM").setContent(R.id.tabVolumen).setIndicator("VOLUMEN", null));
         tbh.addTab(tbh.newTabSpec("MON").setContent(R.id.tabMonedas).setIndicator("MONEDAS", null));
+
+
         btn=findViewById(R.id.btnConvertirLongitud);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,14 +46,35 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+        btn=findViewById(R.id.btnConvertirVolumen);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                spn = findViewById(R.id.spnDEVolumen);
+                int de = spn.getSelectedItemPosition();
+
+                spn = findViewById(R.id.spnAVolumen);
+                int a = spn.getSelectedItemPosition();
+
+                tempval=findViewById(R.id.txtCantidadDeVolumen);
+                double cantidad= Double.parseDouble(tempval.getText().toString());
+                double resp = miObj.convertir(1, de, a, cantidad);
+                Toast.makeText(getApplicationContext(),"Respuesta:"+ resp, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
 class conversores {
     double[][] valores = {
             {1, 100, 39.3701, 3.28084, 1.193, 1.09361, 0.001, 0.000621371},
             {1},
-            {1}
+            {1},
+
+            {1, 1000}, // 1 litro = 1000 mililitros
     };
+
+
+
 
     public double convertir(int opcion, int de, int a, double cantidad) {
         return valores[opcion][a] / valores[opcion][de] * cantidad;

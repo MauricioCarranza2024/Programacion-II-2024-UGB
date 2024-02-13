@@ -10,4 +10,10 @@
         <item>Km</item>
         <item>Millla</item>
     </string-array>
+
+    <string-array name="spnVolumen">
+        <item>litros</item>
+        <item>mililitros</item>
+    </string-array>
+
 </resources>
