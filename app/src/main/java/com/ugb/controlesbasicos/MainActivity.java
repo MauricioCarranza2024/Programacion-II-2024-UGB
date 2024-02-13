@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         tbh.addTab(tbh.newTabSpec("LON").setContent(R.id.tabLongitud).setIndicator("LONGITUD", null));
         tbh.addTab(tbh.newTabSpec("VOL").setContent(R.id.tabVolumen).setIndicator("VOLUMEN", null));
         tbh.addTab(tbh.newTabSpec("MAS").setContent(R.id.tabMasa).setIndicator("MASA", null));
+        tbh.addTab(tbh.newTabSpec("ALM").setContent(R.id.tabMasa).setIndicator("ALMACENAMIENTO", null));
 
         // Botón para conversión de longitud
         btnLongitud = findViewById(R.id.btnConvertirLongitud);
@@ -49,12 +50,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Botón para conversión de volumen
         btnVolumen = findViewById(R.id.btnConvertirVolumen);
         btnVolumen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lógica de conversión de volumen
+
                 spn = findViewById(R.id.spnDEVolumen);
                 int de = spn.getSelectedItemPosition();
 
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         btnLongitud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lógica de conversión de longitud
+
                 spn = findViewById(R.id.spnDEMasa);
                 int de = spn.getSelectedItemPosition();
 
@@ -81,6 +81,23 @@ public class MainActivity extends AppCompatActivity {
                 tempval = findViewById(R.id.txtCantidadDeMasa);
                 double cantidad = Double.parseDouble(tempval.getText().toString());
                 double resp = miObj.convertir(2, de, a, cantidad);
+                Toast.makeText(getApplicationContext(), "Respuesta:" + resp, Toast.LENGTH_LONG).show();
+            }
+        });
+        btnLongitud = findViewById(R.id.btnConvertirAlmacenamiento);
+        btnLongitud.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                spn = findViewById(R.id.spnDEAlmacenamiento);
+                int de = spn.getSelectedItemPosition();
+
+                spn = findViewById(R.id.spnAAlmacenamiento);
+                int a = spn.getSelectedItemPosition();
+
+                tempval = findViewById(R.id.txtCantidadDeAlmacenamiento);
+                double cantidad = Double.parseDouble(tempval.getText().toString());
+                double resp = miObj.convertir(3, de, a, cantidad);
                 Toast.makeText(getApplicationContext(), "Respuesta:" + resp, Toast.LENGTH_LONG).show();
             }
         });
@@ -95,6 +112,8 @@ class conversores {
             {1, 1000, 0.001},
             // Masa
             {1, 1000, 0.00220462, 0.035274, 0.001, 1e+6, 9.8421e-7, 1.1023e-6},
+            // Almacenamiento
+            {1, 0.001, 1e-9, 0.125, 0.000125, 1.25e-7, 1.25e-10, 1.25e-13},
     };
 
     public double convertir(int opcion, int de, int a, double cantidad) {

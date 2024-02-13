@@ -28,4 +28,15 @@
         <item>Tonelada Corta</item>
     </string-array>
 
+    <string-array name="spnAlmacenamiento">
+        <item>Bit</item>
+        <item>Megabit</item>
+        <item>Gigabit</item>
+        <item>Byte</item>
+        <item>Kilobyte</item>
+        <item>Megabyte</item>
+        <item>Gigabyte</item>
+        <item>Terabyte</item>
+    </string-array>
+
 </resources>
