@@ -31,22 +31,23 @@
                 <RelativeLayout
                     android:id="@+id/tabLongitud"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="395dp">
 
                     <TextView
                         android:id="@+id/lblDelongitud"
-                        android:text="DE:"
-                        android:layout_marginTop="60dp"
-                        android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="60dp"
+                        android:text="DE:" />
+
                     <TextView
                         android:id="@+id/lblAlongitud"
-                        android:text="A:"
-                        android:layout_marginTop="120dp"
-                        android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="120dp"
+                        android:text="A:" />
 
                     <Spinner
                         android:id="@+id/spnDElongitud"
@@ -66,11 +67,12 @@
 
                     <EditText
                         android:id="@+id/txtCantidadLongitud"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_below="@+id/spnAlongitud"
                         android:layout_marginTop="40dp"
-                        android:hint="Cantidad a convertir"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:hint="Cantidad a convertir" />
+
                     <Button
                         android:id="@+id/btnConvertirLongitud"
                         android:layout_width="match_parent"
@@ -78,6 +80,15 @@
                         android:layout_below="@+id/txtCantidadLongitud"
                         android:layout_marginTop="40dp"
                         android:text="convertir" />
+
+                    <TextView
+                        android:id="@+id/lblRespuesta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/btnConvertirLongitud"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Respuesta: ?" />
 
                 </RelativeLayout>
 
@@ -136,6 +147,15 @@
                         android:layout_marginTop="40dp"
                         android:text="convertir" />
 
+                <TextView
+                    android:id="@+id/lblRespuesta."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btnConvertirVolumen"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="30dp"
+                    android:text="Respuesta: ?" />
+
             </RelativeLayout>
 
                <RelativeLayout
@@ -193,6 +213,15 @@
                        android:layout_marginTop="40dp"
                        android:text="convertir" />
 
+                   <TextView
+                       android:id="@+id/lblRespuestaa"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/btnConvertirMasa"
+                       android:layout_marginLeft="40dp"
+                       android:layout_marginTop="30dp"
+                       android:text="Respuesta: ?" />
+
                </RelativeLayout>
 
                 <RelativeLayout
@@ -249,6 +278,15 @@
                         android:layout_below="@+id/txtCantidadDeAlmacenamiento"
                         android:layout_marginTop="40dp"
                         android:text="convertir" />
+
+                    <TextView
+                        android:id="@+id/lblRespuesta.."
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/btnConvertirAlmacenamiento"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Respuesta: ?" />
 
                 </RelativeLayout>
 
