@@ -39,5 +39,12 @@
         <item>Terabyte</item>
     </string-array>
 
+    <string-array name="spnTransmision">
+        <item>bit ppor segundo</item>
+        <item>kilobit por segundo</item>
+        <item>megabit por segundo</item>
+
+    </string-array>
+
 
 </resources>

@@ -191,7 +191,7 @@
 
             </RelativeLayout>
 
-            <!-- Tab: Almacenamiento -->
+
             <RelativeLayout
                 android:id="@+id/tabAlmacenamiento"
                 android:layout_width="match_parent"
@@ -243,6 +243,63 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtCantidadDeAlmacenamiento"
+                    android:layout_marginTop="40dp"
+                    android:text="convertir" />
+
+            </RelativeLayout>
+
+            <!-- Tab: Almacenamiento -->
+            <RelativeLayout
+                android:id="@+id/tabTransmision"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/lblDETransmision"
+                    android:text="DE:"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/lblATrasmision"
+                    android:text="A:"
+                    android:layout_below="@id/lblDETransmision"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/spnDETransmision"
+                    android:entries="@array/spnTransmision"
+                    android:layout_alignBaseline="@id/lblDETransmision"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/lblDETransmision"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/spnATransmision"
+                    android:entries="@array/spnTransmision"
+                    android:layout_alignBaseline="@id/lblATrasmision"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/lblATrasmision"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:id="@+id/txtCantidadDeTransmision"
+                    android:layout_below="@+id/spnATransmision"
+                    android:layout_marginTop="40dp"
+                    android:hint="Cantidad a convertir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/btnConvertirTransmision"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtCantidadDeTransmision"
                     android:layout_marginTop="40dp"
                     android:text="convertir" />
 
