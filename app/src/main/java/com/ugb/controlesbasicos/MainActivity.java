@@ -15,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
     TextView tempval;
     Spinner spn;
     Button btnLongitud;
-    Button btnVolumen; // Botón para la conversión de volumen
+    Button btnVolumen;
+    Button btnMasa;
+    Button btnAlmacenamiento;
     conversores miObj = new conversores();
 
     @Override
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         tbh.addTab(tbh.newTabSpec("LON").setContent(R.id.tabLongitud).setIndicator("LONGITUD", null));
         tbh.addTab(tbh.newTabSpec("VOL").setContent(R.id.tabVolumen).setIndicator("VOLUMEN", null));
         tbh.addTab(tbh.newTabSpec("MAS").setContent(R.id.tabMasa).setIndicator("MASA", null));
-        tbh.addTab(tbh.newTabSpec("ALM").setContent(R.id.tabMasa).setIndicator("ALMACENAMIENTO", null));
+        tbh.addTab(tbh.newTabSpec("ALM").setContent(R.id.tabAlmacenamiento).setIndicator("ALMACENAMIENTO", null));
 
         // Botón para conversión de longitud
         btnLongitud = findViewById(R.id.btnConvertirLongitud);
@@ -67,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Respuesta:" + resp, Toast.LENGTH_LONG).show();
             }
         });
-        btnLongitud = findViewById(R.id.btnConvertirMasa);
-        btnLongitud.setOnClickListener(new View.OnClickListener() {
+        btnMasa = findViewById(R.id.btnConvertirMasa);
+        btnMasa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -84,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Respuesta:" + resp, Toast.LENGTH_LONG).show();
             }
         });
-        btnLongitud = findViewById(R.id.btnConvertirAlmacenamiento);
-        btnLongitud.setOnClickListener(new View.OnClickListener() {
+        btnAlmacenamiento = findViewById(R.id.btnConvertirAlmacenamiento);
+        btnAlmacenamiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -109,11 +111,11 @@ class conversores {
             // Longitud
             {1, 100, 39.3701, 3.28084, 1.193, 1.09361, 0.001, 0.000621371},
             // Volumen
-            {1, 1000, 0.001},
+            {1, 1000, 0.001, 0},  // Agrega un 0 para completar la matriz
             // Masa
             {1, 1000, 0.00220462, 0.035274, 0.001, 1e+6, 9.8421e-7, 1.1023e-6},
             // Almacenamiento
-            {1, 0.001, 1e-9, 0.125, 0.000125, 1.25e-7, 1.25e-10, 1.25e-13},
+            {1, 1e-6, 1e-9, 0.125, 0.000125, 1.25e-7, 1.25e-10, 1.25e-13},
     };
 
     public double convertir(int opcion, int de, int a, double cantidad) {
